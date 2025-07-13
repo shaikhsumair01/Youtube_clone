@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Header.jsx */
+.header-layout{
+    @apply flex items-center gap-2 px-5 py-1 w-full;
+}
+.hamburger{
+    @apply text-lg font-bold;
+}
+.main-header{
+    @apply flex justify-between p-2 items-center w-full;
+}
+.title-div{
+@apply flex items-center gap-1;
+}
+.Youtube-icon{
+    @apply text-red-500 text-2xl;
+}
+.Title{
+    @apply text-xl font-semibold;
+}
+.Search-section{
+    @apply flex w-[50%] gap-2 items-center;
+}
+.Search-bar{
+    @apply flex items-center flex-1 p-2 rounded-full border border-gray-200 relative;
+}
+.search-bar-input{
+    @apply w-full focus:outline-none px-2;
+}
+.searchbtn{
+    @apply bg-gray-200 absolute right-0 h-full w-10 flex justify-center items-center rounded-r-full;
+}
+.microphone-logo{
+    @apply bg-gray-200 rounded-full w-10 h-10 flex justify-center items-center;
+}
+.account-details{
+    @apply flex gap-4 items-center;
+}
+.create-button-div{
+    @apply flex py-1 px-3 gap-2 items-center rounded-full bg-gray-200;
+}
+.create-logo{
+    @apply text-xl;
+}
+.create-logo-text{
+    @apply pb-1;
+}
+.bell-icon{
+    @apply text-2xl;
+}
+.name-tag{
+    @apply text-white w-8 h-8 rounded-full flex justify-center items-center bg-green-800;
+}
+/*  */
