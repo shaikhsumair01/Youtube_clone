@@ -1,14 +1,23 @@
 @import "tailwindcss";
 
 /* Header.jsx */
+.default-sidebar{
+    @apply fixed top-5 flex flex-col items-start gap-3;
+}
+.default-links{
+    @apply relative flex flex-col gap-4 items-start left-[-10px] ;
+}
+.sidebar-link{
+    @apply border-b-1 border-black;
+}
 .header-layout{
-    @apply flex items-center gap-2 px-5 py-1 w-full;
+    @apply flex items-start gap-2 px-5 py-1 w-full relative ;
 }
 .hamburger{
     @apply text-lg font-bold;
 }
 .main-header{
-    @apply flex justify-between p-2 items-center w-full;
+    @apply flex justify-between p-2 items-center w-full pl-10;
 }
 .title-div{
 @apply flex items-center gap-1;
@@ -29,16 +38,16 @@
     @apply w-full focus:outline-none px-2;
 }
 .searchbtn{
-    @apply bg-gray-200 absolute right-0 h-full w-10 flex justify-center items-center rounded-r-full;
+    @apply bg-gray-100 absolute right-0 h-full w-10 flex justify-center items-center rounded-r-full;
 }
 .microphone-logo{
-    @apply bg-gray-200 rounded-full w-10 h-10 flex justify-center items-center;
+    @apply bg-gray-100 rounded-full w-10 h-10 flex justify-center items-center;
 }
 .account-details{
     @apply flex gap-4 items-center;
 }
 .create-button-div{
-    @apply flex py-1 px-3 gap-2 items-center rounded-full bg-gray-200;
+    @apply flex py-1 px-3 gap-2 items-center rounded-full bg-gray-100;
 }
 .create-logo{
     @apply text-xl;

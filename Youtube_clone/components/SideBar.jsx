@@ -1,8 +1,6 @@
-import React from "react";
-
 export default function Sidebar(){
   return (
-    <aside className="w-fit bg-gray-100 text-black p-4">
+    <aside className="w-[10%] h-full bg-gray-100 text-black p-2 z-10">
       {/* Sidebar content */}
       <nav>
         <ul>
