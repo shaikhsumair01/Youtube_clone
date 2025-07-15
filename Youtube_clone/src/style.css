@@ -1,24 +1,39 @@
 @import "tailwindcss";
 
 /* Header.jsx */
-.default-sidebar{
-    @apply fixed top-5 flex flex-col items-start gap-3;
-}
-.default-links{
-    @apply relative flex flex-col gap-4 items-start left-[-10px] ;
-}
-.sidebar-link{
-    @apply border-b-1 border-black;
-}
+/* the main container */
 .header-layout{
-    @apply flex items-start gap-2 px-5 py-1 w-full relative ;
+    @apply flex items-start gap-2 px-4 w-full relative ;
 }
+/* hamburger icon */
 .hamburger{
-    @apply text-lg font-bold;
+    @apply text-lg px-2 font-bold cursor-pointer;
 }
+.hamburger:hover{
+    @apply bg-gray-200 rounded-full;
+}
+/* The sidelinks present when the main sidebar is closed (links below the hamburger)*/
+.sidelinks{
+    @apply h-screen fixed top-3.5 left-0.5 flex flex-col items-center gap-6;
+}
+/* links styling of the default sidebar */
+.sidelinks-links{
+    @apply relative flex flex-col gap-8 items-center ;
+}
+.sidelinks-link{
+    @apply flex flex-col items-center justify-center cursor-pointer hover:text-gray-700;
+}
+.sidelinks-link-icons{
+    @apply text-xl leading-none flex-shrink-0 self-center;
+}
+.sidelinks-link-text{
+    @apply text-xs;
+}
+/* Header section (title, icon, search bar and account section) */
 .main-header{
-    @apply flex justify-between p-2 items-center w-full pl-10;
+    @apply flex justify-between p-2 mx-10 items-center w-full ;
 }
+/* title-container for the header and image icon */
 .title-div{
 @apply flex items-center gap-1;
 }
@@ -28,8 +43,9 @@
 .Title{
     @apply text-xl font-semibold;
 }
+/* search container for searchbar and voice command button */
 .Search-section{
-    @apply flex w-[50%] gap-2 items-center;
+    @apply flex w-[50%] gap-4 items-center;
 }
 .Search-bar{
     @apply flex items-center flex-1 p-2 rounded-full border border-gray-200 relative;
@@ -38,16 +54,22 @@
     @apply w-full focus:outline-none px-2;
 }
 .searchbtn{
-    @apply bg-gray-100 absolute right-0 h-full w-10 flex justify-center items-center rounded-r-full;
+    @apply bg-gray-100 hover:bg-gray-200 absolute right-0 h-full w-10 flex justify-center items-center rounded-r-full cursor-pointer;
 }
 .microphone-logo{
-    @apply bg-gray-100 rounded-full w-10 h-10 flex justify-center items-center;
+    @apply bg-gray-100 hover:bg-gray-200 rounded-full w-10 h-10 flex justify-center items-center cursor-pointer;
 }
+/* Account-details section containing the account logo, create button and bell icon */
 .account-details{
+    @apply flex gap-10 items-center;
+}
+/* container containing the create button and bell icon */
+.account-details-container{
     @apply flex gap-4 items-center;
 }
+/* create-button-div containing the + logo and the text */
 .create-button-div{
-    @apply flex py-1 px-3 gap-2 items-center rounded-full bg-gray-100;
+    @apply flex py-1 px-3 gap-2 items-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer;
 }
 .create-logo{
     @apply text-xl;
@@ -61,4 +83,27 @@
 .name-tag{
     @apply text-white w-8 h-8 rounded-full flex justify-center items-center bg-green-800;
 }
-/*  */
+
+/* SideBar.jsx (The sidebar which opens 
+when the click events happen on the hamburger (when hamburger toggle happens)) */
+
+.Toggle-sidebar{
+  @apply absolute top-0 left-0 w-[18%] h-full bg-gray-50 text-black  z-10 transform transition-transform duration-600 ease-in-out ;
+
+}
+.sidebar-container{
+    @apply flex flex-col items-start py-2 px-4 gap-5;
+}
+.sidebar-links{
+    @apply flex flex-col gap-4 border-b-1 border-black pb-6;
+}
+.sidebar-link{
+    @apply flex gap-3 cursor-pointer px-3 py-1;
+}
+
+.sidebar-links>.sidebar-link:hover{
+    @apply bg-gray-200 rounded-xl;
+}
+.sidebar-link-text{
+    @apply text-base;
+}

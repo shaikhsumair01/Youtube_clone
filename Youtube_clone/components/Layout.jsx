@@ -7,7 +7,7 @@ export default function Layout(){
     return(
     <div>
     <Header onToggle={toggleSidebar} />
-    {showSidebar&& <SideBar/>}
+    {showSidebar&& <SideBar onToggle = {toggleSidebar} show={showSidebar}/>}
     </div>
     )
 }
