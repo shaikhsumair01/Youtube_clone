@@ -6,23 +6,63 @@ export default function Sidebar({onToggle, show}){
       {/* The Sidebar content */}
       <div className="sidebar-container">
         <div className="sidebar-link">
-       <button onClick={onToggle} className="hamburger">
-        ☰
-      </button>
+       <i onClick={onToggle} className="fa-solid fa-bars-staggered hamburger"></i>
      <i className="fa-brands fa-youtube Youtube-icon"></i>
      <h1 className="Title"> Streamly</h1>
       </div>
-      <nav>
+      <nav className="side_nav">
         <ul className="sidebar-links">
           <li className="sidebar-link">
-            <i class="fa-solid fa-house sidelinks-link-icons"></i>
+            <i class="fa-solid fa-house sidebar-link-icons"></i>
            <p className="sidebar-link-text">Home</p></li>
           <li className="sidebar-link">
-            <i class="fa-solid fa-play sidelinks-link-icons"></i>
+            <i class="fa-solid fa-play sidebar-link-icons"></i>
                 <p className="sidebar-link-text">Shorts</p></li>
           <li className="sidebar-link">
-             <i class="fa-brands fa-square-youtube sidelinks-link-icons"></i>
+             <i class="fa-brands fa-square-youtube sidebar-link-icons"></i>
                 <p className="sidebar-link-text">Subscriptions</p></li>
+        </ul>
+      </nav>
+      <nav className="side_nav">
+        <h2 className="side-title">Categories:</h2>
+        <ul className="sidebar-links">
+          <li className="sidebar-link">
+            <i class="fa-solid fa-gamepad sidebar-link-icons"></i>
+            <p className="sidebar-link-text">Gaming</p>
+          </li>
+          <li className="sidebar-link">
+            <i class="fa-solid fa-car-side sidebar-link-icons"></i>
+            <p className="sidebar-link-text">Automobiles</p>
+          </li>
+          <li className="sidebar-link">
+            <i class="fa-solid fa-volleyball sidebar-link-icons"></i>
+            <p className="sidebar-link-text">Sports</p>
+          </li>
+          <li className="sidebar-link">
+            <i class="fa-solid fa-newspaper sidebar-link-icons"></i>
+            <p className="sidebar-link-text">News</p>
+          </li>
+          <li className="sidebar-link">
+            <i class="fa-solid fa-tv sidebar-link-icons"></i>
+            <p className="sidebar-link-text">Entertainment</p>
+          </li>
+        </ul>
+      </nav>
+      <nav className="side_nav">
+        <h2 className="side-title">Subscribed</h2>
+        <ul className="sidebar-links">
+          <li className="sidebar-link">
+            <i class="fa-solid fa-circle-user sidebar-link-icons"></i>
+            <p className="sidebar-link-text">Pew-Die-Pie</p>
+          </li>
+          <li className="sidebar-link">
+              <i class="fa-solid fa-circle-user sidebar-link-icons"></i>
+            <p className="sidebar-link-text">Mr Beast</p>
+          </li>
+          <li className="sidebar-link">
+              <i class="fa-solid fa-circle-user sidebar-link-icons"></i>
+            <p className="sidebar-link-text">T-series</p>
+          </li>
         </ul>
       </nav>
       </div>

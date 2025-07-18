@@ -1,4 +1,7 @@
 @import "tailwindcss";
+body, html {
+  @apply m-0 p-0 min-h-screen w-screen overflow-x-hidden;
+}
 
 /* Header.jsx */
 /* the main container */
@@ -14,17 +17,17 @@
 }
 /* The sidelinks present when the main sidebar is closed (links below the hamburger)*/
 .sidelinks{
-    @apply h-screen fixed top-3.5 left-0.5 flex flex-col items-center gap-6;
+    @apply h-screen fixed top-3.5 left-0.5 flex flex-col items-center gap-8;
 }
 /* links styling of the default sidebar */
 .sidelinks-links{
     @apply relative flex flex-col gap-8 items-center ;
 }
 .sidelinks-link{
-    @apply flex flex-col items-center justify-center cursor-pointer hover:text-gray-700;
+    @apply flex flex-col items-center justify-center cursor-pointer text-cyan-700 hover:text-cyan-800;
 }
 .sidelinks-link-icons{
-    @apply text-xl leading-none flex-shrink-0 self-center;
+    @apply text-2xl leading-none flex-shrink-0 self-center;
 }
 .sidelinks-link-text{
     @apply text-xs;
@@ -38,7 +41,7 @@
 @apply flex items-center gap-1;
 }
 .Youtube-icon{
-    @apply text-red-500 text-2xl;
+    @apply text-cyan-600 text-2xl;
 }
 .Title{
     @apply text-xl font-semibold;
@@ -64,21 +67,8 @@
     @apply flex gap-10 items-center;
 }
 /* container containing the create button and bell icon */
-.account-details-container{
-    @apply flex gap-4 items-center;
-}
-/* create-button-div containing the + logo and the text */
-.create-button-div{
-    @apply flex py-1 px-3 gap-2 items-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer;
-}
-.create-logo{
-    @apply text-xl;
-}
-.create-logo-text{
-    @apply pb-1;
-}
 .bell-icon{
-    @apply text-2xl;
+    @apply text-2xl text-cyan-700;
 }
 .name-tag{
     @apply text-white w-8 h-8 rounded-full flex justify-center items-center bg-green-800;
@@ -88,22 +78,57 @@
 when the click events happen on the hamburger (when hamburger toggle happens)) */
 
 .Toggle-sidebar{
-  @apply absolute top-0 left-0 w-[18%] h-full bg-gray-50 text-black  z-10 transform transition-transform duration-600 ease-in-out ;
+  @apply absolute top-0 left-0 w-[20%] h-full bg-gray-50 text-black z-10 overflow-y-auto;
 
 }
 .sidebar-container{
     @apply flex flex-col items-start py-2 px-4 gap-5;
 }
+.side-title{
+    @apply text-cyan-700 font-semibold text-lg mb-3;
+}
+.side_nav{
+    @apply border-b-1 border-black pb-6 w-full;
+}
 .sidebar-links{
-    @apply flex flex-col gap-4 border-b-1 border-black pb-6;
+    @apply flex flex-col gap-3 text-cyan-700 ;
 }
 .sidebar-link{
     @apply flex gap-3 cursor-pointer px-3 py-1;
 }
 
 .sidebar-links>.sidebar-link:hover{
-    @apply bg-gray-200 rounded-xl;
+    @apply bg-gray-200 text-cyan-800 rounded-xl;
+}
+.sidebar-link-icons{
+    @apply text-lg leading-none flex-shrink-0 self-center;
 }
 .sidebar-link-text{
-    @apply text-base;
+    @apply text-sm text-black;
+}
+
+/* initial-page */
+.initial-screen{
+    @apply flex flex-col mt-50 items-center w-screen h-full overflow-hidden;
+}
+.initial-text{
+    @apply text-2xl text-cyan-700;
+}
+.initial-icon{
+    @apply text-4xl text-cyan-700;
+}
+
+/* Feed.jsx */
+
+.Thumbnail-container{
+    @apply grid grid-cols-3 justify-center h-screen gap-2 mt-5 ml-20;
+}
+.thumbnail_image{
+@apply rounded-lg scale-85;
+}
+.thumbnail_card{
+    @apply flex flex-col;
+}
+.thumbnail_title{
+@apply ml-8 text-lg font-semibold;
 }

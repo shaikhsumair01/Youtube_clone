@@ -10,9 +10,9 @@ export default function Header({ onToggle }){
       {/* sidelines: container containing the sidelines when the 
       toggle is closed. When the hamburger is clicked, the sidebar is opened.*/}
       <div className="sidelinks">  
-      <button onClick={onToggle} className="hamburger">
-        ☰
-      </button>
+
+      <i onClick={onToggle} className="fa-solid fa-bars-staggered hamburger"></i>
+    
       {
         isHomepage && (
           // sidelinks-links: links container which are below the hamburger
@@ -53,16 +53,9 @@ export default function Header({ onToggle }){
       <i className="fa-solid fa-microphone microphone-logo"></i>
       </div>
       {/* account details for showing the user's account, create button and notification button */}
-      <div className="account-details">
-        {/* container for create button and bell icon */}
-        <div className="account-details-container">
-          {/* create button div for icon and text */}
-        <div className="create-button-div">
-      <i className="fa-solid fa-plus create-logo"></i>
-      <p className="create-logo-text">Create</p>
-      </div>
+      <div className="account-details"> 
       <i className="fa-regular fa-bell bell-icon"></i>
-      </div>
+    
       {/* tag name icon */}
       <i className="fa-solid fa-a name-tag"></i>
       </div>
