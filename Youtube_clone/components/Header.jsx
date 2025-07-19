@@ -1,6 +1,6 @@
 /* Header element for the navigation. It will take the prop function onToggle, 
 where when the user clicks the hamburger, a sidebar list is displayed*/
-import {useLocation} from "react-router-dom"
+import {useLocation, Link} from "react-router-dom"
 export default function Header({ onToggle }){
   const location = useLocation();
   const isHomepage = location.pathname === "/";
@@ -18,19 +18,21 @@ export default function Header({ onToggle }){
           // sidelinks-links: links container which are below the hamburger
             <ul className="sidelinks-links">
               {/* sidebar-link contains the icon and the text styled in a container */}
+              <Link to="/">
               <li className="sidelinks-link">
-                <i class="fa-solid fa-house sidelinks-link-icons"></i>
+                <i className="fa-solid fa-house sidelinks-link-icons"></i>
                 <p className="sidelinks-link-text">Home</p>
                 </li>
+                </Link> 
               <li className="sidelinks-link">
-              <i class="fa-solid fa-play sidelinks-link-icons"></i>
+              <i className="fa-solid fa-play sidelinks-link-icons"></i>
                 <p className="sidelinks-link-text">Shorts</p></li>
 
               <li className="sidelinks-link">
-                <i class="fa-brands fa-square-youtube sidelinks-link-icons"></i>
+                <i className="fa-brands fa-square-youtube sidelinks-link-icons"></i>
                 <p className="sidelinks-link-text">Subscriptions</p></li>
               <li className="sidelinks-link">
-                <i class="fa-solid fa-circle-user sidelinks-link-icons"></i>
+                <i className="fa-solid fa-circle-user sidelinks-link-icons"></i>
                <p className="sidelinks-link-text">You</p> </li>
             </ul>
           )

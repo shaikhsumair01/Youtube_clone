@@ -78,8 +78,7 @@ body, html {
 when the click events happen on the hamburger (when hamburger toggle happens)) */
 
 .Toggle-sidebar{
-  @apply absolute top-0 left-0 w-[20%] h-full bg-gray-50 text-black z-10 overflow-y-auto;
-
+  @apply fixed top-0 left-0 w-[20%] h-full bg-gray-50 text-black z-10 overflow-y-auto;
 }
 .sidebar-container{
     @apply flex flex-col items-start py-2 px-4 gap-5;
@@ -124,11 +123,37 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply grid grid-cols-3 justify-center h-screen gap-2 mt-5 ml-20;
 }
 .thumbnail_image{
-@apply rounded-lg scale-85;
+@apply rounded-lg scale-85  transition delay-150 duration-300;
 }
 .thumbnail_card{
-    @apply flex flex-col;
+    @apply flex flex-col active:bg-gray-50 cursor-pointer;
+}
+.thumbnail_card:hover .thumbnail_image{
+@apply rounded-none;
+}
+.video-desc{
+    @apply ml-9 flex flex-col items-start;
 }
 .thumbnail_title{
-@apply ml-8 text-lg font-semibold;
+@apply text-lg font-semibold w-[95%] leading-tight;
+}
+.channel-name{
+    @apply text-base text-gray-700 ;
+}
+.channel-name:hover{
+    @apply font-medium;
+}
+.channel-views{
+    @apply text-xs text-gray-600 mt-[2px];
+}
+
+/* VideoPage.jsx */
+.VideoPage-container{
+    @apply flex ml-12 h-auto;
+}
+.video-container{
+    @apply w-[60%] mt-8;
+}
+.video-display{
+    @apply rounded-xl;
 }
