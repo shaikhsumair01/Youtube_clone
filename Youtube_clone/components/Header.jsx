@@ -7,7 +7,7 @@ export default function Header({ onToggle }){
 
   return (
     <header className="header-layout">
-      {/* sidelines: container containing the sidelines when the 
+      {/* sidelinks: container containing the sidelinks when the 
       toggle is closed. When the hamburger is clicked, the sidebar is opened.*/}
       <div className="sidelinks">  
 

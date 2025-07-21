@@ -1,8 +1,26 @@
 import { Link } from "react-router";
-
+import {useRef, useEffect} from "react";
+// The sidebar layout created when the user opens the sidebar
 export default function Sidebar({onToggle, show}){
+  const SideBarRef =useRef(null) ;
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (SideBarRef.current && !SideBarRef.current.contains(event.target)) {
+        onToggle(); // close sidebar
+      }
+    }
+  if (show) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [show]);
+
   return (
-  <aside className={`Toggle-sidebar ${show ? 'translate-x-0' : '-translate-x-full'}`}>
+  <aside  ref={SideBarRef}
+ className={`Toggle-sidebar ${show ? 'translate-x-0' : '-translate-x-full'}`}>
 
 
       {/* The Sidebar content */}
@@ -14,11 +32,12 @@ export default function Sidebar({onToggle, show}){
       </div>
       <nav className="side_nav">
         <ul className="sidebar-links">
-          <Link to = "/" onClick={onToggle}>
           <li className="sidebar-link">
+          <Link to = "/" onClick={onToggle} className="flex items-center gap-3 w-full ml-[-2px]">
             <i className="fa-solid fa-house sidebar-link-icons"></i>
-           <p className="sidebar-link-text">Home</p></li>
+           <p className="sidebar-link-text">Home</p>
            </Link>
+           </li>
           <li className="sidebar-link">
             <i className="fa-solid fa-play sidebar-link-icons"></i>
                 <p className="sidebar-link-text">Shorts</p></li>

@@ -6,7 +6,7 @@ body, html {
 /* Header.jsx */
 /* the main container */
 .header-layout{
-    @apply flex items-start gap-2 px-4 w-full relative ;
+    @apply flex items-start gap-2 px-4 py-2 w-full fixed top-0 left-0 z-10 bg-white;
 }
 /* hamburger icon */
 .hamburger{
@@ -17,7 +17,7 @@ body, html {
 }
 /* The sidelinks present when the main sidebar is closed (links below the hamburger)*/
 .sidelinks{
-    @apply h-screen fixed top-3.5 left-0.5 flex flex-col items-center gap-8;
+    @apply h-screen fixed top-6 left-0.5 flex flex-col items-center gap-8;
 }
 /* links styling of the default sidebar */
 .sidelinks-links{
@@ -34,7 +34,7 @@ body, html {
 }
 /* Header section (title, icon, search bar and account section) */
 .main-header{
-    @apply flex justify-between p-2 mx-10 items-center w-full ;
+    @apply flex justify-between p-2 mx-10 items-center w-full;
 }
 /* title-container for the header and image icon */
 .title-div{
@@ -78,7 +78,7 @@ body, html {
 when the click events happen on the hamburger (when hamburger toggle happens)) */
 
 .Toggle-sidebar{
-  @apply fixed top-0 left-0 w-[20%] h-full bg-gray-50 text-black z-10 overflow-y-auto;
+  @apply fixed top-0 left-0 w-[20%] h-full bg-gray-50 text-black z-20 overflow-y-auto;
 }
 .sidebar-container{
     @apply flex flex-col items-start py-2 px-4 gap-5;
@@ -120,7 +120,7 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 /* Feed.jsx */
 
 .Thumbnail-container{
-    @apply grid grid-cols-3 justify-center h-screen gap-2 mt-5 ml-20;
+    @apply grid grid-cols-3 justify-center h-screen gap-2 mt-20 ml-20;
 }
 .thumbnail_image{
 @apply rounded-lg scale-85  transition delay-150 duration-300;
@@ -131,17 +131,17 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 .thumbnail_card:hover .thumbnail_image{
 @apply rounded-none;
 }
-.video-desc{
+.video-thumbnail-desc{
     @apply ml-9 flex flex-col items-start;
 }
 .thumbnail_title{
-@apply text-lg font-semibold w-[95%] leading-tight;
+@apply text-lg font-semibold w-[95%] leading-tight break-words text-ellipsis overflow-hidden line-clamp-2;
 }
 .channel-name{
-    @apply text-base text-gray-700 ;
+    @apply text-base text-gray-700 font-medium text-ellipsis overflow-hidden line-clamp-1 cursor-pointer;
 }
 .channel-name:hover{
-    @apply font-medium;
+    @apply font-bold;
 }
 .channel-views{
     @apply text-xs text-gray-600 mt-[2px];
@@ -149,11 +149,94 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 
 /* VideoPage.jsx */
 .VideoPage-container{
-    @apply flex ml-12 h-auto;
+    @apply flex ml-12 mt-15 h-auto;
 }
+.CurrentVideo-description{
+    @apply flex flex-col gap-3;
+}
+/* VideoPlayer.jsx */
 .video-container{
     @apply w-[60%] mt-8;
 }
 .video-display{
     @apply rounded-xl;
+}
+.video-desc{
+    @apply flex flex-col gap-4 max-w-[700px] w-full;
+}
+.video-title{
+    @apply text-2xl font-semibold;
+}
+.video-info{
+ @apply flex justify-between items-center w-full;   
+}
+.channel-logo{
+    @apply w-10 h-10 rounded-full;
+}
+.about-channel{
+    @apply flex gap-5 items-center;
+}
+.channel-info{
+    @apply flex flex-col ;
+}
+.Subscribe-button{
+    @apply bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer;
+}
+.Like-dislike{
+    @apply flex items-center bg-gray-200 rounded-full cursor-pointer;
+}
+.Like-button{
+   @apply flex items-center gap-2 px-2 py-2 rounded-l-full bg-gray-200 hover:bg-gray-300;
+
+}
+.divider {
+  @apply h-6 border-r border-gray-400;
+}
+.Like-count{
+    @apply text-sm;
+}
+.disLike-button{
+   @apply px-2 py-2 rounded-r-full hover:bg-gray-300 text-sm;
+}
+.Share-Button{
+    @apply flex items-center gap-2 p-2 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer;
+}
+.three-dots{
+    @apply p-2 bg-gray-200 hover:bg-gray-300 rounded-full;
+}
+.More-about{
+    @apply bg-gray-200 p-2 rounded-lg;
+}
+.More-about-details{
+    @apply flex gap-3 text-sm font-semibold;
+}
+
+.More-about-text{
+    @apply line-clamp-3;
+}
+/* CommentSection.jsx */
+.Comments-section-title{
+    @apply text-xl font-medium;
+}
+.Comment-layout{
+    @apply max-w-[700px] w-full flex  items-center gap-3;
+}
+.Comment-icon{
+@apply w-12 h-12 rounded-full;
+}
+/* Error.jsx */
+.Error-div{
+    @apply h-screen w-screen flex flex-col gap-4 justify-center items-center;
+}
+.Error-text{
+    @apply text-3xl text-red-500 font-bold;
+}
+.Error-details{
+    @apply text-xl text-teal-600 font-semibold;
+}
+.icon-error{
+    @apply text-5xl text-yellow-400 bg-black rounded-full;
+}
+.back-btn{
+    @apply p-2 bg-cyan-700 text-white text-lg font-semibold rounded-2xl hover:bg-cyan-500;
 }

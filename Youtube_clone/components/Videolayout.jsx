@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom"
+// This function component is used for structuring the thumbnail and the video details shown on the homepage 
 export default function Videolayout(){
     const Navigate = useNavigate();
     const handleClick=(e)=>{
@@ -13,7 +14,7 @@ export default function Videolayout(){
     return(
         <div className="thumbnail_card" onClick={handleClick}>
            <img src="./pexels.jpg" alt="" className="thumbnail_image" />
-            <div className="video-desc">
+            <div className="video-thumbnail-desc">
          <p className="thumbnail_title"> How to make robots realistic in an amazing ways</p>
            <p className="channel-name">GreatStack</p>
            <p className="channel-views">99k views &bull; 2 days ago</p>

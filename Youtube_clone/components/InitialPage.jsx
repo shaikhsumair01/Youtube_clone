@@ -1,3 +1,4 @@
+// an initial section shown on the homepage when the user is not authenticated (signed in)
 export default function InitialPage(){
     return(
     <div className="initial-screen">
