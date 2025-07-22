@@ -34,7 +34,7 @@ body, html {
 }
 /* Header section (title, icon, search bar and account section) */
 .main-header{
-    @apply flex justify-between p-2 mx-10 items-center w-full;
+    @apply flex justify-between p-2 mx-10 items-center w-screen;
 }
 /* title-container for the header and image icon */
 .title-div{
@@ -48,13 +48,13 @@ body, html {
 }
 /* search container for searchbar and voice command button */
 .Search-section{
-    @apply flex w-[50%] gap-4 items-center;
+    @apply flex max-w-[700px] md:w-[50%] gap-4 items-center;
 }
 .Search-bar{
     @apply flex items-center flex-1 p-2 rounded-full border border-gray-200 relative;
 }
 .search-bar-input{
-    @apply w-full focus:outline-none px-2;
+    @apply max-w-[300px] focus:outline-none px-2;
 }
 .searchbtn{
     @apply bg-gray-100 hover:bg-gray-200 absolute right-0 h-full w-10 flex justify-center items-center rounded-r-full cursor-pointer;
@@ -78,7 +78,7 @@ body, html {
 when the click events happen on the hamburger (when hamburger toggle happens)) */
 
 .Toggle-sidebar{
-  @apply fixed top-0 left-0 w-[20%] h-full bg-gray-50 text-black z-20 overflow-y-auto;
+  @apply fixed top-0 left-0 w-[50%] md:w-[30%] lg:w-[20%] h-full bg-gray-50 text-black z-20 overflow-y-auto;
 }
 .sidebar-container{
     @apply flex flex-col items-start py-2 px-4 gap-5;
@@ -118,9 +118,8 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 }
 
 /* Feed.jsx */
-
 .Thumbnail-container{
-    @apply grid grid-cols-3 justify-center h-screen gap-2 mt-20 ml-20;
+    @apply grid grid-cols-3 justify-center h-full gap-2 mt-20 ml-20;
 }
 .thumbnail_image{
 @apply rounded-lg scale-85  transition delay-150 duration-300;
@@ -149,20 +148,20 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 
 /* VideoPage.jsx */
 .VideoPage-container{
-    @apply flex ml-12 mt-15 h-auto;
+    @apply flex ml-12 mt-20 h-auto gap-5;
 }
 .CurrentVideo-description{
-    @apply flex flex-col gap-3;
+    @apply flex flex-col gap-3 max-w-[800px];
 }
 /* VideoPlayer.jsx */
 .video-container{
-    @apply w-[60%] mt-8;
+    @apply w-full ;
 }
 .video-display{
     @apply rounded-xl;
 }
 .video-desc{
-    @apply flex flex-col gap-4 max-w-[700px] w-full;
+    @apply flex flex-col gap-4 w-full;
 }
 .video-title{
     @apply text-2xl font-semibold;
@@ -180,7 +179,7 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply flex flex-col ;
 }
 .Subscribe-button{
-    @apply bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer;
+    @apply bg-red-600 p-2 rounded-md hover:bg-red-700 cursor-pointer text-white;
 }
 .Like-dislike{
     @apply flex items-center bg-gray-200 rounded-full cursor-pointer;
@@ -219,10 +218,32 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply text-xl font-medium;
 }
 .Comment-layout{
-    @apply max-w-[700px] w-full flex  items-center gap-3;
+    @apply w-full flex items-center gap-3;
 }
 .Comment-icon{
 @apply w-12 h-12 rounded-full;
+}
+/* RecommendedVideo */
+.VideoPage-recommended{
+    @apply flex flex-col gap-3;
+}
+.RecommendedVideo-container{
+    @apply flex gap-2 items-start h-30 max-w-[400px];
+}
+.recommendedVideo-thumbnail{
+@apply rounded-md w-[50%];
+}
+.recommended-details{
+    @apply flex flex-col gap-1 text-sm w-[40%];
+}
+.recommended-title{
+    @apply  line-clamp-2 overflow-hidden break-words text-ellipsis font-semibold;
+}
+.recommended-channel, .recommended-views{
+@apply text-gray-600;
+}
+.recommended-views{
+ @apply text-xs;   
 }
 /* Error.jsx */
 .Error-div{
