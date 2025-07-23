@@ -1,9 +1,16 @@
-import { Link } from "react-router";
-import {useRef, useEffect} from "react";
+import { Link} from "react-router";
+import {useContext, useRef, useEffect} from "react";
+import CategoryContext from "../src/CategoryContext";
 // The sidebar layout created when the user opens the sidebar
 export default function Sidebar({onToggle, show}){
+
+  // getting the category from useContext and then setting it to filter the page based on category selected in sidebar
+  const {category, setCategory} = useContext(CategoryContext);
+// placing a useRef on the entire aside container. When the sidebar is open and user clicks outside the sidebar then the sidebar closes.
   const SideBarRef =useRef(null) ;
+
   useEffect(() => {
+    // function for handling the clicks outside the sidebar (closing the sidebar)
     function handleClickOutside(event) {
       if (SideBarRef.current && !SideBarRef.current.contains(event.target)) {
         onToggle(); // close sidebar
@@ -32,8 +39,8 @@ export default function Sidebar({onToggle, show}){
       </div>
       <nav className="side_nav">
         <ul className="sidebar-links">
-          <li className="sidebar-link">
-          <Link to = "/" onClick={onToggle} className="flex items-center gap-3 w-full ml-[-2px]">
+          <li className={`sidebar-link ${category===0?"border-b-2 border-teal-600":""}`} onClick={()=> {setCategory(0); onToggle()}}>
+          <Link to = "/" className="flex items-center gap-3 w-full ml-[-2px]">
             <i className="fa-solid fa-house sidebar-link-icons"></i>
            <p className="sidebar-link-text">Home</p>
            </Link>
@@ -49,23 +56,23 @@ export default function Sidebar({onToggle, show}){
       <nav className="side_nav">
         <h2 className="side-title">Categories:</h2>
         <ul className="sidebar-links">
-          <li className="sidebar-link">
+          <li className={`sidebar-link ${category===20?"border-b-2 border-teal-600":""}`} onClick={()=>{setCategory(20); onToggle()}}>
             <i className="fa-solid fa-gamepad sidebar-link-icons"></i>
             <p className="sidebar-link-text">Gaming</p>
           </li>
-          <li className="sidebar-link">
+          <li className={`sidebar-link ${category===2?"border-b-2 border-teal-600":""}`} onClick={()=>{setCategory(2); onToggle()}}>
             <i className="fa-solid fa-car-side sidebar-link-icons"></i>
             <p className="sidebar-link-text">Automobiles</p>
           </li>
-          <li className="sidebar-link">
+          <li className={`sidebar-link ${category===17?"border-b-2 border-teal-600":""}`} onClick={()=>{setCategory(17);onToggle()}}>
             <i className="fa-solid fa-volleyball sidebar-link-icons"></i>
             <p className="sidebar-link-text">Sports</p>
           </li>
-          <li className="sidebar-link">
+          <li className={`sidebar-link ${category===25?"border-b-2 border-teal-600":""}`} onClick={()=>{setCategory(25);onToggle()}}>
             <i className="fa-solid fa-newspaper sidebar-link-icons"></i>
             <p className="sidebar-link-text">News</p>
           </li>
-          <li className="sidebar-link">
+          <li className={`sidebar-link ${category===24?"border-b-2 border-teal-600":""}`} onClick={()=>{setCategory(24);onToggle()}}>
             <i className="fa-solid fa-tv sidebar-link-icons"></i>
             <p className="sidebar-link-text">Entertainment</p>
           </li>

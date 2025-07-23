@@ -8,6 +8,6 @@ export default function RecommendedVideos(){
        <p className="recommended-channel">Geeks for Geeks</p>
        <p className="recommended-views">48k views</p>
        </div>
-       <i class="fa-solid fa-ellipsis-vertical"></i>
+       <i className="fa-solid fa-ellipsis-vertical"></i>
         </div>);
 }

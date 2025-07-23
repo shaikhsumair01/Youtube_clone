@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+import { useContext, useState, useEffect } from "react"
 import Videolayout from "./Videolayout"
+import CategoryContext from "../src/CategoryContext";
 /*This function component loops through the list of objects which we get from the api 
  and create the videolayout based on the data received to show on the homepage */
 export default function Feed(){
     // creating a useState for setting the videos
     const [videos, setVideos] = useState([]);
-    // we will get random data from this topics array and slice this array after shuffling to display mixed categories to the user on the homepage.
-    const topics = ["coding", "funny moments", "travel", "music", "startup culture", "design trends", "space", "robotics", "gaming"];
+    // using useContext to get the category and displaying the video based on category
+   const { category, setCategory } = useContext(CategoryContext);
 
 // using useEffect to fetch the videos
     useEffect(()=>{
@@ -15,30 +15,22 @@ export default function Feed(){
             try{
                 const data = import.meta.env.VITE_Youtube_Api_key;
                 console.log("API Key:", data);
-                // sort the array topics
-               const shuffledTopics = topics.sort(() => 0.5 - Math.random()); 
-               const selectedTopics = shuffledTopics.slice(0, 5);
+                // fetching the videos
+  const response = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${data} `)
+  const result = await response.json();
 
-const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
-  params: {
-    part: 'snippet',
-    q: selectedTopics.join(" "),
-    maxResults: 12,
-    type: 'video',
-    key: data,
-  }
-});
+  // storing the videos
+    const items = result.items;
+    console.log(items)
+ 
+setVideos(items);
 
-    const items = response.data.items;
-    const filteredVideos = items.filter(item => item.id.kind === "youtube#video");
-    console.log(filteredVideos)
-    setVideos(filteredVideos);
       } catch (error) {
         console.error("Failed to fetch YouTube videos", error);
       }
     };
     fetchVideos()
-    },[])
+    },[category])
     return(
         <div className="Thumbnail-container">
        {videos.map((video, index) => (

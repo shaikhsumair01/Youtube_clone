@@ -158,7 +158,7 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply w-full ;
 }
 .video-display{
-    @apply rounded-xl;
+    @apply rounded-xl w-full ;
 }
 .video-desc{
     @apply flex flex-col gap-4 w-full;

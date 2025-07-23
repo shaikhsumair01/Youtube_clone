@@ -8,7 +8,7 @@ export default function CommentSection(){
             Temporibus ab libero, minima ratione quo perspiciatis animi consequatur? 
             Animi praesentium ad ipsa minus consequatur?
              Ea, aut nesciunt modi harum est autem!</p>
-              <i class="fa-solid fa-ellipsis-vertical"></i>
+              <i className="fa-solid fa-ellipsis-vertical"></i>
         </div>
         <div className="Comment-layout">
         <img src="pexels.jpg" alt="" className="Comment-icon" />
@@ -16,7 +16,7 @@ export default function CommentSection(){
             Temporibus ab libero, minima ratione quo perspiciatis animi consequatur? 
             Animi praesentium ad ipsa minus consequatur?
              Ea, aut nesciunt modi harum est autem!</p>
-              <i class="fa-solid fa-ellipsis-vertical"></i>
+              <i className="fa-solid fa-ellipsis-vertical"></i>
         </div>
         <div className="Comment-layout">
         <img src="pexels.jpg" alt="" className="Comment-icon" />
@@ -24,7 +24,7 @@ export default function CommentSection(){
             Temporibus ab libero, minima ratione quo perspiciatis animi consequatur? 
             Animi praesentium ad ipsa minus consequatur?
              Ea, aut nesciunt modi harum est autem!</p>
-              <i class="fa-solid fa-ellipsis-vertical"></i>
+              <i className="fa-solid fa-ellipsis-vertical"></i>
         </div>
         </>
     )
