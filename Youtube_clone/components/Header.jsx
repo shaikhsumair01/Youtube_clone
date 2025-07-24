@@ -1,10 +1,12 @@
 /* Header element for the navigation. It will take the prop function onToggle, 
 where when the user clicks the hamburger, a sidebar list is displayed*/
 import {useLocation, Link} from "react-router-dom"
+import CategoryContext from "../src/CategoryContext";
+import { useContext } from "react";
 export default function Header({ onToggle }){
   const location = useLocation();
   const isHomepage = location.pathname === "/";
-
+const {category, setCategory} = useContext(CategoryContext);
   return (
     <header className="header-layout">
       {/* sidelinks: container containing the sidelinks when the 
@@ -19,12 +21,12 @@ export default function Header({ onToggle }){
             <ul className="sidelinks-links">
               {/* sidebar-link contains the icon and the text styled in a container */}
               <Link to="/">
-              <li className="sidelinks-link">
+              <li className="sidelinks-link" onClick={()=>setCategory(0)}>
                 <i className="fa-solid fa-house sidelinks-link-icons"></i>
                 <p className="sidelinks-link-text">Home</p>
                 </li>
                 </Link> 
-              <li className="sidelinks-link">
+              <li className="sidelinks-link" onClick={()=>setCategory(22)}>
               <i className="fa-solid fa-play sidelinks-link-icons"></i>
                 <p className="sidelinks-link-text">Shorts</p></li>
 
@@ -52,7 +54,7 @@ export default function Header({ onToggle }){
       <input type="text" placeholder="Search" className="search-bar-input"></input>
       <i className="fa-solid fa-magnifying-glass searchbtn"></i>
       </div>
-      <i className="fa-solid fa-microphone microphone-logo"></i>
+      
       </div>
       {/* account details for showing the user's account, create button and notification button */}
       <div className="account-details"> 

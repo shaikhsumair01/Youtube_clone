@@ -13,15 +13,14 @@ export default function Feed(){
     useEffect(()=>{
         const fetchVideos = async() =>{
             try{
-                const data = import.meta.env.VITE_Youtube_Api_key;
-                console.log("API Key:", data);
+                const data = import.meta.env.VITE_Youtube_Api_key;             
                 // fetching the videos
-  const response = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${data} `)
+  const response = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=30&regionCode=US&videoCategoryId=${category}&key=${data} `)
   const result = await response.json();
 
   // storing the videos
     const items = result.items;
-    console.log(items)
+  
  
 setVideos(items);
 

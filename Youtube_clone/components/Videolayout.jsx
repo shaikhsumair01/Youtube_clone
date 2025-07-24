@@ -1,4 +1,6 @@
 import {useNavigate} from "react-router-dom"
+import moment from 'moment';
+import formatters from "../Utlis.js/formatters";
 // This function component is used for structuring the thumbnail and the video details shown on the homepage 
 export default function Videolayout(props){
 
@@ -25,7 +27,7 @@ export default function Videolayout(props){
             <div className="video-thumbnail-desc">
          <p className="thumbnail_title">{props.video.snippet.title}</p>
            <p className="channel-name">{props.video.snippet.channelTitle}</p>
-           <p className="channel-views">{Math.trunc(Math.random()*200)}k views &bull; </p>
+           <p className="channel-views">{formatters(props.video.statistics?.viewCount)} views &bull; {moment(props.video.snippet.publishedAt).fromNow()}</p>
         
         </div> 
            

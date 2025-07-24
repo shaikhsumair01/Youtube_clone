@@ -170,10 +170,10 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
  @apply flex justify-between items-center w-full;   
 }
 .channel-logo{
-    @apply w-10 h-10 rounded-full;
+    @apply w-20 h-20 rounded-full;
 }
 .about-channel{
-    @apply flex gap-5 items-center;
+    @apply flex gap-2 items-center w-[25%];
 }
 .channel-info{
     @apply flex flex-col ;
@@ -218,10 +218,13 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply text-xl font-medium;
 }
 .Comment-layout{
-    @apply w-full flex items-center gap-3;
+    @apply w-full flex items-start gap-3;
 }
-.Comment-icon{
-@apply w-12 h-12 rounded-full;
+.User-Name{
+    @apply text-gray-600 ;
+}
+.Comment-logo{
+    @apply text-2xl text-teal-600
 }
 /* RecommendedVideo */
 .VideoPage-recommended{
