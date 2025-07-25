@@ -28,7 +28,7 @@ export default function Videolayout(props){
          <p className="thumbnail_title">{props.video.snippet.title}</p>
            <p className="channel-name">{props.video.snippet.channelTitle}</p>
            <p className="channel-views">{formatters(props.video.statistics?.viewCount)} views &bull; {moment(props.video.snippet.publishedAt).fromNow()}</p>
-        
+    
         </div> 
            
         </div>

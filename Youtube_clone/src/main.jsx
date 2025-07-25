@@ -6,6 +6,7 @@ import Home from "../components/Home.jsx"
 import VideoPage from '../components/VideoPage.jsx'
 import Error from '../components/Error.jsx'
 import Channel from '../components/Channel.jsx'
+import Search from '../components/Search.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HashRouter>
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')).render(
         <Route index element = {<Home/>}/>
         <Route path="/VideoPage/:videoId" element = {<VideoPage/>}/>
         <Route path="/Channel" element = {<Channel/>}/>
+        <Route path="/Search/:searchId" element = {<Search/>}/>
         </Route>
         <Route path = "*" element = {<Error/>}/>
       </Routes>

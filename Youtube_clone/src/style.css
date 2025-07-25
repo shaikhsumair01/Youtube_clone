@@ -105,7 +105,32 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 .sidebar-link-text{
     @apply text-sm text-black;
 }
-
+/* FilterVids.jsx */
+.Filter-buttons{
+    @apply flex gap-10 mt-20 justify-center;
+}
+.Filter-button{
+    @apply text-lg bg-gray-100 p-1 px-2 rounded-xl hover:font-medium hover:bg-gray-200 hover:text-cyan-900 cursor-pointer;
+}
+/* Search.jsx */
+.Search-Container{
+    @apply mt-20 ml-15 flex flex-col cursor-pointer;
+}
+.Search-result{
+    @apply flex w-full items-start pt-5 gap-10 px-5 max-h-[300px];
+}
+.Search-thumbnail{
+    @apply h-[300px] w-[50%] object-cover;
+}
+.Search-info{
+    @apply w-[40%]  flex flex-col items-start gap-3 h-[300px];
+}
+.Search-title{
+    @apply text-lg font-semibold w-[90%] leading-tight break-words text-ellipsis overflow-hidden line-clamp-2;
+}
+.search-description{
+    @apply text-gray-700 w-[80%] text-sm leading-tight break-words text-ellipsis overflow-hidden line-clamp-2;
+}
 /* initial-page */
 .initial-screen{
     @apply flex flex-col mt-50 items-center w-screen h-full overflow-hidden;
@@ -119,10 +144,10 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 
 /* Feed.jsx */
 .Thumbnail-container{
-    @apply grid grid-cols-3 justify-center h-full gap-2 mt-20 ml-20;
+    @apply grid grid-cols-3 justify-center h-full gap-2 mt-5 ml-15;
 }
 .thumbnail_image{
-@apply rounded-lg scale-85  transition delay-150 duration-300;
+@apply rounded-lg scale-80 transition delay-150 duration-300;
 }
 .thumbnail_card{
     @apply flex flex-col active:bg-gray-50 cursor-pointer;
@@ -134,13 +159,13 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply ml-9 flex flex-col items-start;
 }
 .thumbnail_title{
-@apply text-lg font-semibold w-[95%] leading-tight break-words text-ellipsis overflow-hidden line-clamp-2;
+@apply text-base font-semibold w-[85%] leading-tight break-words text-ellipsis overflow-hidden line-clamp-2;
 }
 .channel-name{
-    @apply text-base text-gray-700 font-medium text-ellipsis overflow-hidden line-clamp-1 cursor-pointer;
+    @apply text-base text-gray-600 text-ellipsis overflow-hidden line-clamp-1 cursor-pointer;
 }
 .channel-name:hover{
-    @apply font-bold;
+    @apply font-semibold;
 }
 .channel-views{
     @apply text-xs text-gray-600 mt-[2px];
@@ -148,7 +173,7 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 
 /* VideoPage.jsx */
 .VideoPage-container{
-    @apply flex ml-12 mt-20 h-auto gap-5;
+    @apply flex ml-10 mt-20 h-auto gap-5;
 }
 .CurrentVideo-description{
     @apply flex flex-col gap-3 max-w-[800px];
@@ -221,10 +246,10 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply w-full flex items-start gap-3;
 }
 .User-Name{
-    @apply text-gray-600 ;
+    @apply text-gray-800 font-bold;
 }
 .Comment-logo{
-    @apply text-2xl text-teal-600
+    @apply text-2xl text-cyan-600
 }
 /* RecommendedVideo */
 .VideoPage-recommended{
@@ -256,7 +281,7 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
     @apply text-3xl text-red-500 font-bold;
 }
 .Error-details{
-    @apply text-xl text-teal-600 font-semibold;
+    @apply text-xl text-cyan-600 font-semibold;
 }
 .icon-error{
     @apply text-5xl text-yellow-400 bg-black rounded-full;

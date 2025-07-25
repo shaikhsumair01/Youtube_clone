@@ -2,8 +2,8 @@ import formatters from "../Utlis.js/formatters";
 import moment from "moment";
 // Contains the code for displaying the video player, and even about the channel
 export default function VideoPlayer({video, channelData}){
-     const videoId = video.id || video.id.videoId;
-   
+    const videoId = video.id?.videoId || video.id;
+
     return(<>
      <div className="video-container">
      <iframe

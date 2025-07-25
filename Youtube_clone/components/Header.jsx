@@ -1,12 +1,25 @@
 /* Header element for the navigation. It will take the prop function onToggle, 
 where when the user clicks the hamburger, a sidebar list is displayed*/
-import {useLocation, Link} from "react-router-dom"
+import {useLocation, Link, useNavigate} from "react-router-dom"
 import CategoryContext from "../src/CategoryContext";
 import { useContext } from "react";
+
 export default function Header({ onToggle }){
+
   const location = useLocation();
   const isHomepage = location.pathname === "/";
-const {category, setCategory} = useContext(CategoryContext);
+  const isSearchpage = location.pathname.startsWith("/Search/");
+
+  const {category, setCategory} = useContext(CategoryContext);
+  const navigate = useNavigate();
+// Searching based on the text provided by the user in the searchbar
+const searchResult=(e)=>{
+const search = e.target.previousElementSibling.value;
+if (search.trim()) {
+    navigate(`/Search/${encodeURIComponent(search)}`);
+}
+}
+
   return (
     <header className="header-layout">
       {/* sidelinks: container containing the sidelinks when the 
@@ -16,7 +29,7 @@ const {category, setCategory} = useContext(CategoryContext);
       <i onClick={onToggle} className="fa-solid fa-bars-staggered hamburger"></i>
     
       {
-        isHomepage && (
+        (isHomepage || isSearchpage) && (
           // sidelinks-links: links container which are below the hamburger
             <ul className="sidelinks-links">
               {/* sidebar-link contains the icon and the text styled in a container */}
@@ -52,7 +65,7 @@ const {category, setCategory} = useContext(CategoryContext);
         {/* search bar containing the search button and the search bar input */}
       <div className="Search-bar">
       <input type="text" placeholder="Search" className="search-bar-input"></input>
-      <i className="fa-solid fa-magnifying-glass searchbtn"></i>
+      <i className="fa-solid fa-magnifying-glass searchbtn" onClick={(e)=> searchResult(e)}></i>
       </div>
       
       </div>
