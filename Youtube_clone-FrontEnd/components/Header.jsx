@@ -2,7 +2,7 @@
 where when the user clicks the hamburger, a sidebar list is displayed*/
 import {useLocation, Link, useNavigate} from "react-router-dom"
 import CategoryContext from "../src/CategoryContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 
 export default function Header({ onToggle }){
 
@@ -12,13 +12,21 @@ export default function Header({ onToggle }){
 
   const {category, setCategory} = useContext(CategoryContext);
   const navigate = useNavigate();
+   const searchInputRef = useRef(null);
 // Searching based on the text provided by the user in the searchbar
 const searchResult=(e)=>{
-const search = e.target.previousElementSibling.value;
+const search =searchInputRef.current?.value;
 if (search.trim()) {
     navigate(`/Search/${encodeURIComponent(search)}`);
+    searchInputRef.current.value = "";
 }
-}
+};
+const handleKeyDown = (e) => {
+  if (e.key === "Enter") {
+    searchResult();
+  }
+};
+
 
   return (
     <header className="header-layout">
@@ -42,13 +50,16 @@ if (search.trim()) {
               <li className="sidelinks-link" onClick={()=>setCategory(22)}>
               <i className="fa-solid fa-play sidelinks-link-icons"></i>
                 <p className="sidelinks-link-text">Shorts</p></li>
-
+              <Link to="/Channel">
               <li className="sidelinks-link">
                 <i className="fa-brands fa-square-youtube sidelinks-link-icons"></i>
                 <p className="sidelinks-link-text">Subscriptions</p></li>
+                </Link>
+                <Link to="/Channel">
               <li className="sidelinks-link">
                 <i className="fa-solid fa-circle-user sidelinks-link-icons"></i>
                <p className="sidelinks-link-text">You</p> </li>
+               </Link>
             </ul>
           )
           }
@@ -64,8 +75,9 @@ if (search.trim()) {
       <div className="Search-section">
         {/* search bar containing the search button and the search bar input */}
       <div className="Search-bar">
-      <input type="text" placeholder="Search" className="search-bar-input"></input>
-      <i className="fa-solid fa-magnifying-glass searchbtn" onClick={(e)=> searchResult(e)}></i>
+      <input type="text" placeholder="Search" className="search-bar-input" ref={searchInputRef} onKeyDown={handleKeyDown}
+></input>
+      <i className="fa-solid fa-magnifying-glass searchbtn" onClick={searchResult}></i>
       </div>
       
       </div>
@@ -74,7 +86,9 @@ if (search.trim()) {
       <i className="fa-regular fa-bell bell-icon"></i>
     
       {/* tag name icon */}
+      <Link to="/Channel">
       <i className="fa-solid fa-a name-tag"></i>
+      </Link>
       </div>
       </div>
     </header>

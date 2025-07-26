@@ -95,7 +95,9 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 .sidebar-link{
     @apply flex gap-3 cursor-pointer px-3 py-1;
 }
-
+.sidebar-link-iternal{
+    @apply flex items-center gap-3 w-full ml-[-2px];
+}
 .sidebar-links>.sidebar-link:hover{
     @apply bg-gray-200 text-cyan-800 rounded-xl;
 }
@@ -104,6 +106,9 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 }
 .sidebar-link-text{
     @apply text-sm text-black;
+}
+.active-Link{
+    @apply shadow-md shadow-cyan-700/50;
 }
 /* FilterVids.jsx */
 .Filter-buttons{

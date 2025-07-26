@@ -1,4 +1,5 @@
 import formatters from "../Utlis.js/formatters";
+import { Link } from "react-router";
 import moment from "moment";
 // Contains the code for displaying the video player, and even about the channel
 export default function VideoPlayer({video, channelData}){
@@ -22,9 +23,13 @@ export default function VideoPlayer({video, channelData}){
         <div className="video-info">
             
             <div className="about-channel">
+            <Link to ="/Channel">
            <img src={channelData?channelData.snippet.thumbnails.medium.url:"pexels.jpg"} alt="" className="channel-logo" />
+            </Link>    
             <div className="channel-info">
+                <Link to ="/Channel">
                 <p className="channel-name">{video.snippet.channelTitle}</p>
+                </Link>
                 <p className="channel-views">{formatters(channelData?channelData.statistics?.viewCount:"4k")} Subscribers</p>
                 </div>
             </div>
