@@ -294,3 +294,55 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 .back-btn{
     @apply p-2 bg-cyan-700 text-white text-lg font-semibold rounded-2xl hover:bg-cyan-500;
 }
+
+/* Authenticate.jsx */
+.Authenticate{
+    @apply w-screen h-screen flex justify-center items-center;
+}
+.card-wrapper{
+    @apply relative w-[60%] h-[85%] perspective-[1000px] mt-10 bg-gray-100 shadow-lg shadow-cyan-800/50;
+
+}
+.card-inner{
+    @apply w-full h-full transition-transform duration-700 ease-in-out;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.rotate-card{
+     @apply rotate-y-180;
+}
+
+.card-side{
+    @apply absolute w-full flex flex-col items-center pt-10 gap-10 backface-hidden;
+    transform-style: preserve-3d;
+}
+.front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.Auth-header{
+    @apply text-cyan-600 font-semibold text-2xl;
+}
+.form-item-div{
+    @apply flex text-lg justify-between items-center w-full px-10;
+}
+.form-label{
+    @apply text-gray-800 break-words w-[30%];
+}
+.form-input{
+    @apply bg-white rounded-md max-w-full w-[60%] py-2 px-4  text-cyan-800 placeholder:text-cyan-600; 
+}
+.form-input:focus{
+@apply outline-none shadow-lg shadow-cyan-800/30;
+}
+.form-submit-btn{
+    @apply bg-cyan-600 hover:bg-cyan-800 text-white py-2 px-4 rounded-md;
+}
+.auth-switch-link{
+    @apply font-medium hover:text-cyan-800;
+}

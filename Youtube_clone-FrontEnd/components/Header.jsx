@@ -86,7 +86,7 @@ const handleKeyDown = (e) => {
       <i className="fa-regular fa-bell bell-icon"></i>
     
       {/* tag name icon */}
-      <Link to="/Channel">
+      <Link to="/Auth">
       <i className="fa-solid fa-a name-tag"></i>
       </Link>
       </div>
