@@ -5,37 +5,46 @@ import axios from "axios"
 import { useNavigate } from "react-router";
 export default function Authenticate(){
     const navigate = useNavigate()
+    // Setting form inputs
     const [user, setUser] = useState("");
     const [error, setError] = useState("")
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // flipped is used for flipping the form window. 
+    // On the front it has registeration and on back it is login
      const [Flipped, isFlipped] = useState(false);
 
     const handleAuth = async (e) => {
   e.preventDefault();
+  // Checking which window is open
   const endpoint = Flipped ? "login" : "register";
 
   try {
+    // storing payload based on the screen
     const payload = Flipped ? { email, password } : { username, email, password }; 
 
+    // posting the data based on the endpoint
     const response = await axios.post(`http://localhost:3300/${endpoint}`, payload);
 
+    // getting the token and user data based on the response
     const { token, user } = response.data;
 
     localStorage.setItem("token", token); // storing the JWT
     setUser(user); // updating the user
+    // Success message (mostly bypassed by navigate as the page directly navigates to home)
      toast.success(`${Flipped ? "Login" : "Registration"} successful!`, {
   position: "top-center",
   autoClose: 3000,
   theme: "dark"
     });
 
-    navigate("/"); // navigating to home page
+    navigate("/"); // navigating to home page when logged in
   } catch (err) {
+    // If the authentication fails
     console.error("Auth failed:", err);
     setError("Authentication failed. Please check credentials.");
-  
+    // Sending the appropriate toast error to the user
     if (err.response?.status === 409) {
   toast.error("User already exists.");
 } 
@@ -46,13 +55,13 @@ else if(err.response?.status===401){
      toast.error("Invalid Credentials. Please try again");
 }
     else {
-  toast.error("Authentication failed. Please try after some time.");
+  toast.error("Authentication failed.Can't connect to the database. Please try after some time.");
 }
-
 
   }
 };
 useEffect(() => {
+  // clearing the input fields
   setUsername("");
   setEmail("");
   setPassword("");
@@ -64,6 +73,7 @@ useEffect(() => {
         <div className="Authenticate">
         <div className="card-wrapper">
             <div className={`card-inner ${Flipped ? "rotate-card" : ""}`}>
+              {/* Register form card */}
          <form className="card-side front">
             <h2 className="Auth-header">Sign Up </h2>
             <div className="form-item-div">
@@ -86,6 +96,7 @@ useEffect(() => {
             }}
             >Have an Account?</a>
          </form>
+         {/* Login-form card */}
          <form className="card-side back">
             <h2 className="Auth-header">Login</h2>
              <div className="form-item-div">

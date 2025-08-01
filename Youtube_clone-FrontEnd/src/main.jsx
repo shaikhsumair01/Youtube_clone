@@ -14,11 +14,11 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path ='/' element = {<App/>}>
         <Route index element = {<Home/>}/>
-        <Route path='/Auth' element = {<Authenticate/>}/>
         <Route path="/VideoPage/:videoId" element = {<VideoPage/>}/>
         <Route path="/Channel" element = {<Channel/>}/>
         <Route path="/Search/:searchId" element = {<Search/>}/>
         </Route>
+          <Route path='/Auth' element = {<Authenticate/>}/>
         <Route path = "*" element = {<Error/>}/>
       </Routes>
     </HashRouter>
