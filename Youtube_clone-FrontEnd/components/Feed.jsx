@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import Videolayout from "./Videolayout"
-import CategoryContext from "../src/CategoryContext";
+import CategoryContext from "../src/Context/CategoryContext";
 /*This function component loops through the list of objects which we get from the api 
  and create the videolayout based on the data received to show on the homepage */
 export default function Feed(){

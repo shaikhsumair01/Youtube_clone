@@ -1,7 +1,7 @@
 import Layout from "../components/Layout"
 import { Outlet } from "react-router-dom"
 import { useState } from "react"
-import CategoryContext from "./CategoryContext"
+import CategoryContext from "./Context/CategoryContext"
 function App() {
   // initially the category will be set to 0 so that the user can get mixed categories of videos
 const [category, setCategory] = useState(0)

@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import formatters from "../Utlis.js/formatters";
+import formatters from "../../Utlis.js/formatters";
 import moment from "moment";
 export default function Search(){
     const { searchId } = useParams();
@@ -43,7 +43,7 @@ export default function Search(){
     }
 
     return(
-        <>
+        <div className="search-video-list-wrapper">
         {
             videos.map(video=>{
                 return(
@@ -62,6 +62,6 @@ export default function Search(){
                 )
             })
         }
-        </>
+        </div>
     )
 }

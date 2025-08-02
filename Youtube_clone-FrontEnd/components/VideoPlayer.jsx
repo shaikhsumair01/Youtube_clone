@@ -28,11 +28,12 @@ export default function VideoPlayer({video, channelData}){
             </Link>    
             <div className="channel-info">
                 <Link to ="/Channel">
-                <p className="channel-name">{video.snippet.channelTitle}</p>
+                <p className="videoPlayer-channel-name">{video.snippet.channelTitle}</p>
                 </Link>
                 <p className="channel-views">{formatters(channelData?channelData.statistics?.viewCount:"4k")} Subscribers</p>
                 </div>
             </div>
+          
             <button className="Subscribe-button">Subscribe</button>
             <div className="Like-dislike">
              <div className="Like-button">  
@@ -42,10 +43,12 @@ export default function VideoPlayer({video, channelData}){
                  <div className="divider" />
             <i className="disLike-button fa-regular fa-thumbs-down"></i>
             </div>
+         
             <div className="Share-Button">
                 <i className="fa-solid fa-share"></i>
                 <p className="share-text">Share</p>
             </div>
+           
         <i className="fa-solid fa-ellipsis three-dots"></i>
         </div>
         <div className="More-about">

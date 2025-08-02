@@ -1,6 +1,6 @@
 import { Link, useLocation} from "react-router";
 import {useContext, useRef, useEffect} from "react";
-import CategoryContext from "../src/CategoryContext";
+import CategoryContext from "../src/Context/CategoryContext";
 // The sidebar layout created when the user opens the sidebar
 export default function Sidebar({onToggle, show}){
   const location = useLocation()

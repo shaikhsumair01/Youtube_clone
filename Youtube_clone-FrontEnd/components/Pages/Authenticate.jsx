@@ -45,7 +45,10 @@ export default function Authenticate(){
     console.error("Auth failed:", err);
     setError("Authentication failed. Please check credentials.");
     // Sending the appropriate toast error to the user
-    if (err.response?.status === 409) {
+    if(err.response?.status === 400){
+      toast.error("Authentication Failed. Please fill your credentials")
+    }
+    else if (err.response?.status === 409) {
   toast.error("User already exists.");
 } 
 else if (err.response?.status === 404){

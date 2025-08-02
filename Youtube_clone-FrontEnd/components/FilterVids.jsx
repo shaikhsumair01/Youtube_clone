@@ -1,5 +1,5 @@
 // filterButtons shown to filter based on category
-import CategoryContext from "../src/CategoryContext"
+import CategoryContext from "../src/Context/CategoryContext"
 import { useContext } from "react"
 export default function FilterVids(){
     const {category,setCategory} = useContext(CategoryContext) 
