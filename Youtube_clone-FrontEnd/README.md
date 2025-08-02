@@ -72,8 +72,26 @@ npm run dev
         --Utils.js
             --formatters.js
 
-    Future Updates: 
+# 🔗 Backend Integration
+- The backend files are running at port 3300 ("https://youtube-clone-backend-6b23.onrender.com" on render) and supports the following endpoints:
+- (## Please check out my Youtube_clone-Backend for reference as well)
+- Post: /register : to regsiter new user
+- Get: /getAllVideos : to fetch all the videos
+- Get:/getMyChannel : to get the current logged in user's channel
+- Delete: /deleteComment/:commentId: deleting the comment from it's id
+
+# 🧪 Testing
+- Used Chrome developer tools for testing the responsiveness of the UI and Api connectivity. You can also test the backend through postman or thunderClient
+
+# 📌 Future Improvements: 
     1) Will deploy the project on vercel and will connect the backend with the frontEnd.
-    2) Will make the recommended videos functional
+    2) Will make the recommended videos section (side-bar(video-navigation)) functional
     3) Update the search.jsx so that it takes real-time details about the video and display it, 
     since it shows random data (video-thumbnail, channel-views etc) when the video is accessed through search functionality. 
+    4) Show videos based on audience preferences and filter them accordingly 
+
+#   📄 License
+This project is licensed under the MIT License.
+
+#   🙌 Acknowledgments
+Inspired by YouTube’s UI/UX and built to practice full-stack development with React and Express.
