@@ -36,7 +36,7 @@ Streamly is a YouTube-inspired video platform built with React. This is the fron
  VITE_Youtube_Api_key=your_youtube_api_key
 ## then run the dev server:
 npm run dev
-
+## then start the server in backend (Refer to Youtube_clone-BackEnd Readme (In the router folder))
 2. **folder structure**
 --components
     --Pages
