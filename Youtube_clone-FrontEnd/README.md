@@ -28,9 +28,13 @@ Streamly is a YouTube-inspired video platform built with React. This is the fron
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/streamly-frontend.git
-   cd streamly-frontend
+   git clone https://github.com/your-username/YOUTUBE_CLone-FrontEnd.git
+   cd YOUTUBE_CLone-FrontEnd
+    npm init -y
    npm install
+   <!-- install these dependencies -->
+- npm install react react-dom react-router-dom toastify dotenv tailwind jwtdecode axios moment
+
  ## create your env file
  .env:
  VITE_Youtube_Api_key=your_youtube_api_key
