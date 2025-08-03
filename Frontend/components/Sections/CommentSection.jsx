@@ -93,6 +93,30 @@ export default function CommentSection({ video }) {
       console.error("Failed to update comment:", err);
     }
   };
+  // Handle delete
+
+  const handleDelete = async (commentId) => {
+    // fetching the delete request
+  try {
+    const response = await fetch(`http://localhost:3300/deleteComment/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // if fetched
+    if (response.ok) {
+      // removing the comment
+      setComments(prev => prev.filter(comment => comment._id !== commentId));
+    } else {
+      console.error("Failed to delete comment:", await response.text());
+    }
+  } catch (err) {
+    console.error("Delete error:", err);
+  }
+};
+
+
 
   return (
     <>
@@ -146,9 +170,11 @@ export default function CommentSection({ video }) {
 
               <p className="Comment-date">{moment(comment.createdAt).fromNow()}</p>
 
-              {/* Show Edit Button if user owns the comment */}
+              {/* Show Edit Button and delete button if user owns the comment */}
             {(comment.user?._id === userId || comment.channelName === userName) &&
             editingCommentId !== comment._id && (
+              <>
+              <div className="button-div">
             <button
             className="Comment-edit-btn"
             onClick={() => {
@@ -158,6 +184,14 @@ export default function CommentSection({ video }) {
             >
             Edit
         </button>
+         <button
+      className="Comment-delete-btn"
+      onClick={() => handleDelete(comment._id)}
+    >
+      Delete
+    </button>
+    </div>
+</>
 )}
 
             </div>

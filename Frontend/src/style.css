@@ -290,6 +290,15 @@ when the click events happen on the hamburger (when hamburger toggle happens)) *
 .Comment-text{
     @apply text-sm md:text-base;
 }
+.Comment-edit-btn, .Comment-delete-btn{
+    @apply mt-2  text-white p-2 rounded-md;
+}
+.Comment-edit-btn{
+    @apply bg-cyan-600 hover:bg-cyan-800;
+}
+.Comment-delete-btn{
+    @apply bg-black hover:bg-gray-700;
+}
 /* RecommendedVideo */
 .VideoPage-recommended{
     @apply flex flex-col md:gap-10 sm:gap-20;

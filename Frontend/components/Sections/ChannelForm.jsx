@@ -40,7 +40,7 @@ export default function ChannelForm() {
       if (error.response && error.response.status === 409) {
         toast.error("You already have a channel.");
       } else {
-        toast.error("Error creating channel. Please try again.");
+        toast.error(err.response.data.message);
       }
     }
   };
