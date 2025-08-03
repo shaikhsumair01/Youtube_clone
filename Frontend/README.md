@@ -93,6 +93,7 @@ npm run dev
     3) Update the search.jsx so that it takes real-time details about the video and display it, 
     since it shows random data (video-thumbnail, channel-views etc) when the video is accessed through search functionality. 
     4) Show videos based on audience preferences and filter them accordingly 
+    5) Plans on implementing lazy loading in the future
 
 #   📄 License
 This project is licensed under the MIT License.
