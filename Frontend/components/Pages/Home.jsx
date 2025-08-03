@@ -1,8 +1,8 @@
-import InitialPage from "../InitialPage"
+import InitialPage from "../Sections/InitialPage"
 import { useEffect, useState } from "react";
 import {jwtDecode} from "jwt-decode";
-import FilterVids from "../FilterVids"
-import Feed from "../Feed"
+import FilterVids from "../Sections/FilterVids"
+import Feed from "../Sections/Feed"
 
 export default function Home(){
     const [authenticated, setAuthenticated] = useState(false);

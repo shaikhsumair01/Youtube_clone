@@ -1,4 +1,4 @@
-import formatters from "../Utlis.js/formatters";
+import formatters from "../../Utlis.js/formatters";
 import { Link } from "react-router";
 import moment from "moment";
 // Contains the code for displaying the video player, and even about the channel

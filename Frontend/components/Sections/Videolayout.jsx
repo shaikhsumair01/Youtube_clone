@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom"
 import moment from 'moment';
-import formatters from "../Utlis.js/formatters";
+import formatters from "../../Utlis.js/formatters";
 // This function component is used for structuring the thumbnail and the video details shown on the homepage 
 export default function Videolayout(props){
 

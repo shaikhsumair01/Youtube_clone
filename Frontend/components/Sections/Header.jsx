@@ -1,7 +1,7 @@
 /* Header element for the navigation. It will take the prop function onToggle, 
 where when the user clicks the hamburger, a sidebar list is displayed*/
 import {useLocation, Link, useNavigate} from "react-router-dom"
-import CategoryContext from "../src/Context/CategoryContext";
+import CategoryContext from "../../src/Context/CategoryContext";
 import { useContext, useRef } from "react";
 import { jwtDecode } from "jwt-decode";
 

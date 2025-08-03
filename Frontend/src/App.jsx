@@ -1,4 +1,4 @@
-import Layout from "../components/Layout"
+import Layout from "../components/Sections/Layout"
 import { Outlet } from "react-router-dom"
 import { useState } from "react"
 import CategoryContext from "./Context/CategoryContext"

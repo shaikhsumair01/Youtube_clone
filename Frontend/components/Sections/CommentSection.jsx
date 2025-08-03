@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import formatters from "../Utlis.js/formatters";
+import formatters from "../../Utlis.js/formatters";
 import moment from "moment";
 import { jwtDecode } from "jwt-decode";
 

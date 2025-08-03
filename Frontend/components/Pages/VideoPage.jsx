@@ -1,6 +1,6 @@
-import VideoPlayer from "../VideoPlayer"
-import CommentSection from "../CommentSection"
-import RecommendedVideos from "../RecomendedVideos"
+import VideoPlayer from "../Sections/VideoPlayer"
+import CommentSection from "../Sections/CommentSection"
+import RecommendedVideos from "../Sections/RecomendedVideos"
 import { useLocation, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Error from "./Error";
