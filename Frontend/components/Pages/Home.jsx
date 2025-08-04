@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import {jwtDecode} from "jwt-decode";
 import FilterVids from "../Sections/FilterVids"
 import Feed from "../Sections/Feed"
-import Loader from "../Sections/Loader";
+
 
 export default function Home(){
     const [authenticated, setAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true)
     const token = localStorage.getItem("token");
 
      useEffect(() => {
@@ -26,17 +25,14 @@ export default function Home(){
         localStorage.removeItem("token");
         setAuthenticated(false);
       }
-      setLoading(false)
+      
     }
 }, []);
 
 
     return(<div>
-    {loading?(
-      <div className="initial-screen">
-      <Loader/>
-      </div>
-    ): authenticated ? (
+    {
+     authenticated ? (
         <>
           <FilterVids />
           <Feed />
