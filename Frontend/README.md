@@ -29,7 +29,7 @@ Streamly is a YouTube-inspired video platform built with React. This is the fron
 
 ✅ **Live Backend:** [https://youtube-clone-backend-6b23.onrender.com]
 📦 **Frontend Repo:** [https://github.com/shaikhsumair01/Youtube_clone-frontEnd.git]
-🚀 **Frontend Deployment:** [https://your-frontend.vercel.app](https://your-frontend.vercel.app)
+🚀 **Frontend Deployment:** [https://streamly-vgcb.vercel.app/]
 
 ## 🛠 Setup Instructions
 
