@@ -511,3 +511,10 @@ transform: rotate(180deg);
 .drop-btn{
     @apply text-xs md:text-base shadow-xs p-1 md:p-2 shadow-cyan-700 text-cyan-700;
 }
+/* Loader.jsx */
+.Loader-container{
+    @apply flex justify-center items-center py-4;
+}
+.loader{
+    @apply animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500;
+}

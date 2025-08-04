@@ -11,6 +11,8 @@ Streamly is a YouTube-inspired video platform built with React. This is the fron
 - **Moment.js**
 - **JWT Decode**
 - **Font Awesome Icons**
+- **Render** (for deployment)
+- **Vercel** (for deployment)
 
 ## 📦 Features
 
@@ -23,13 +25,18 @@ Streamly is a YouTube-inspired video platform built with React. This is the fron
 - 📺 Creating your channel, performing crud operations on your channel videos.
 - 📱 Responsive design using Tailwind
 
+## 🌐 Deployment Status
+
+✅ **Live Backend:** [https://youtube-clone-backend-6b23.onrender.com]
+📦 **Frontend Repo:** [https://github.com/shaikhsumair01/Youtube_clone-frontEnd.git]
+🚀 **Frontend Deployment:** [https://your-frontend.vercel.app](https://your-frontend.vercel.app)
 
 ## 🛠 Setup Instructions
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/shaikhsumair01/Youtube_clone-FrontEnd.git
-   cd YOUTUBE_CLone-FrontEnd
+   cd FrontEnd
     npm init -y
    npm install
    <!-- install these dependencies -->
@@ -88,12 +95,11 @@ npm run dev
 - Used Chrome developer tools for testing the responsiveness of the UI and Api connectivity. You can also test the backend through postman or thunderClient
 
 # 📌 Future Improvements: 
-    1) Will deploy the project on vercel and will connect the backend with the frontEnd.
-    2) Will make the recommended videos section (side-bar(video-navigation)) functional
-    3) Update the search.jsx so that it takes real-time details about the video and display it, 
+    1) Will make the recommended videos section (side-bar(video-navigation)) functional
+    2) Update the search.jsx so that it takes real-time details about the video's channel desciption and display it, 
     since it shows random data (video-thumbnail, channel-views etc) when the video is accessed through search functionality. 
-    4) Show videos based on audience preferences and filter them accordingly 
-    5) Plans on implementing lazy loading in the future
+    3) Show videos based on audience preferences and filter them accordingly 
+    4) Plans on implementing lazy loading in the future
 
 #   📄 License
 This project is licensed under the MIT License.

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import axios from "axios";
+import instance from "../../src/api/Render-server";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // creating the channel If the user doesn't have one
@@ -21,8 +22,8 @@ export default function ChannelForm() {
     }
 // posting user response to database
     try {
-      const response = await axios.post(
-        "http://localhost:3300/createChannel",
+      const response = await instance.post(
+        "/createChannel",
         { channelName, description },
         {
           headers: {

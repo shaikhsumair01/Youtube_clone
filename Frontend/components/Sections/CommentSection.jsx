@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import formatters from "../../Utlis.js/formatters";
 import moment from "moment";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import Loader from "./Loader";
+import instance from "../../src/api/Render-server";
 import { jwtDecode } from "jwt-decode";
 
 // Showing comments and adding edit mode for the comments
@@ -9,6 +14,8 @@ export default function CommentSection({ video }) {
   const [comments, setComments] = useState([]);
 //   updating each comments
   const [newComment, setNewComment] = useState("");
+// setting loading
+const [loading, setLoading] = useState(false);
 
 //   for editing the comment body
   const [editingCommentId, setEditingCommentId] = useState(null);
@@ -22,14 +29,18 @@ export default function CommentSection({ video }) {
 //   fetching all the comments based on the id
   useEffect(() => {
     const fetchComments = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3300/getComments/${video.id?.videoId || video.id}`);
-        const data = await response.json();
+        const response = await instance.get(`/getComments/${video.id?.videoId || video.id}`);
+        const data = response.data;
         // setting the comments and showing them
         setComments(data);
       } catch (err) {
         console.error("Failed to fetch comments:", err);
-      }
+      }finally {
+      setLoading(false);
+    }
+
     };
     // if video is present, only then will this function execute
     if (video?.id) {
@@ -42,44 +53,57 @@ export default function CommentSection({ video }) {
     // if newComment doesn't exist then we return
     if (!newComment.trim()) return;
     // Else we post the new comment
+    setLoading(true);
     try {
-      const response = await fetch("http://localhost:3300/addComments", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+      const response = await instance.post("/addComments", 
         // Sending the payload
-        body: JSON.stringify({
+        {
           videoId: video.id?.videoId || video.id,
           CommentBody: newComment,
           channelName: userName,
-        }),
-      });
+        },
+        {
+          headers:{
+            "Content-Type": "application/json",
+             Authorization: `Bearer ${token}`,
+
+          }
+        }
+      );
     // getting the response 
-      const data = await response.json();
+      const data = response.data;
     //   Setting the data
       setComments(prev => [data, ...prev]);
       setNewComment("");
+      toast.success("Comment posted!");
+
     } catch (err) {
       console.error("Failed to post comment:", err);
+      toast.error("Failed to post comment.");
+
     }
+    finally {
+  setLoading(false);
+  }
+
   };
 //   Handling the update on comments 
 // (passing the commentId and traversing the comment list based on id in the backend)
   const handleUpdate = async (commentId) => {
     if (!editedCommentBody.trim()) return;
+     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:3300/updateComment/${commentId}`, {
-        method: "PUT",
+      const response = await instance.put(`/updateComment/${commentId}`, 
+        { CommentBody: editedCommentBody },
+        {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ CommentBody: editedCommentBody }),
+        
       });
 
-      const updatedComment = await response.json();
+      const updatedComment =response.data;
 
       setComments(prev =>
         prev.map(comment =>
@@ -89,37 +113,56 @@ export default function CommentSection({ video }) {
 
       setEditingCommentId(null);
       setEditedCommentBody("");
+       toast.success("Comment updated!");
+
     } catch (err) {
       console.error("Failed to update comment:", err);
+       toast.error("Failed to update comment.");
+
     }
+    finally {
+  setLoading(false);
+  }
+
   };
   // Handle delete
 
   const handleDelete = async (commentId) => {
     // fetching the delete request
+     setLoading(true);
   try {
-    const response = await fetch(`http://localhost:3300/deleteComment/${commentId}`, {
-      method: "DELETE",
+    const response = await instance.delete(`/deleteComment/${commentId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
     // if fetched
-    if (response.ok) {
-      // removing the comment
-      setComments(prev => prev.filter(comment => comment._id !== commentId));
-    } else {
-      console.error("Failed to delete comment:", await response.text());
-    }
+   if (response.status === 200) {
+    // deletes the comment
+  setComments(prev => prev.filter(comment => comment._id !== commentId));
+   toast.success("Comment deleted!");
+
+} else {
+  // Sends the error message
+  console.error("Failed to delete comment:", response.data);
+  toast.error("Failed to delete comment.");
+
+}
+
   } catch (err) {
     console.error("Delete error:", err);
+    toast.error("Error deleting comment.");
+
   }
+  finally {
+  setLoading(false);
+  }
+
 };
-
-
-
   return (
     <>
+    <ToastContainer position="top-right" autoClose={3000} />
+
       <h1 className="Comments-section-title">
         {comments.length
           ? formatters(comments.length)
@@ -139,9 +182,11 @@ export default function CommentSection({ video }) {
           Post
         </button>
       </div>
+       {loading && <Loader />}
 
       {/* Render Comments */}
-      {comments.map((comment) => (
+      {!loading &&
+        comments.map((comment) => (
         <div key={comment._id} className="Comment-layout">
           <div className="comment-inner-div">
             <i className="fa-solid fa-circle-user Comment-logo"></i>
@@ -154,12 +199,15 @@ export default function CommentSection({ video }) {
                     className="Comment-textarea"
                     value={editedCommentBody}
                     onChange={(e) => setEditedCommentBody(e.target.value)}
+                     disabled={loading}
                   />
                   <div className="button-div">
-                  <button className="Comment-submit-btn" onClick={() => handleUpdate(comment._id)}>
+                  <button className="Comment-submit-btn" onClick={() => handleUpdate(comment._id)}  disabled={loading}
+>
                     Save
                   </button>
-                  <button className="Comment-cancel-btn" onClick={() => setEditingCommentId(null)}>
+                  <button className="Comment-cancel-btn" onClick={() => setEditingCommentId(null)}  disabled={loading}
+>
                     Cancel
                   </button>
                   </div>
@@ -181,12 +229,16 @@ export default function CommentSection({ video }) {
             setEditingCommentId(comment._id);
             setEditedCommentBody(comment.CommentBody);
             }}
+             disabled={loading}
+
             >
             Edit
         </button>
          <button
       className="Comment-delete-btn"
       onClick={() => handleDelete(comment._id)}
+       disabled={loading}
+
     >
       Delete
     </button>

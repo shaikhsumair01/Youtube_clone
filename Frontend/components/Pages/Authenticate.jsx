@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios"
+import instance from "../../src/api/Render-server";
 import { useNavigate } from "react-router";
 export default function Authenticate(){
     const navigate = useNavigate()
@@ -25,7 +26,7 @@ export default function Authenticate(){
     const payload = Flipped ? { email, password } : { username, email, password }; 
 
     // posting the data based on the endpoint
-    const response = await axios.post(`http://localhost:3300/${endpoint}`, payload);
+    const response = await instance.post(`/${endpoint}`, payload);
 
     // getting the token and user data based on the response
     const { token, user } = response.data;
@@ -43,6 +44,10 @@ export default function Authenticate(){
   } catch (err) {
     // If the authentication fails
     console.error("Auth failed:", err);
+    if(err.response.status == 500){
+      setError("Server is waking up or unreachable. Please wait and try again.")
+      toast.error("Can't access the server. The server is waking up, so please wait for a few moments")
+    }
     setError("Authentication failed. Please check credentials.");
     // Sending the appropriate toast error to the user
       toast.error(err.response.data.message)

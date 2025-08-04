@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import instance from "../../src/api/Render-server";
 import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -65,8 +66,8 @@ export default function ChannelPage({ channel }) {
   /* On submit we will take the payload from the user
    and then pass them to their respective url to edit or to add*/
   async function handleSubmit() {
-    if (!title || !url) {
-      toast.error("Title and URL are required.");
+    if (!title || (!url && !isEditing)) {
+      toast.error("Title and URL are required for new Videos.");
       return;
     }
 
@@ -81,7 +82,7 @@ export default function ChannelPage({ channel }) {
     try {
       // if is Editing then we pass the video details to the put request
       if (isEditing) {
-        const res = await axios.put(`http://localhost:3300/updateVideo/${editVideoId}`, 
+        const res = await instance.put(`/updateVideo/${editVideoId}`, 
           payload,
           {
             headers: {
@@ -97,7 +98,7 @@ export default function ChannelPage({ channel }) {
         toast.success("Video updated successfully!");
         // Else we will upload the video
       } else {
-        const res = await axios.post("http://localhost:3300/uploadVideo",
+        const res = await instance.post("/uploadVideo",
         payload,
         {
           headers: {
@@ -113,7 +114,7 @@ export default function ChannelPage({ channel }) {
       }
       closeModal();
     } catch (err) {
-      toast.error("Something went wrong.");
+      toast.error(err.response.data.message);
       console.error(err);
     }
   }
@@ -139,7 +140,7 @@ useEffect(() => {
 // deeleting the video
 async function handleDelete(videoId) {
   try {
-    await axios.delete(`http://localhost:3300/deleteVideo/${videoId}`, {
+    await instance.delete(`/deleteVideo/${videoId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

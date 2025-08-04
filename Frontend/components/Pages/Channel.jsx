@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import instance from "../../src/api/Render-server";
 import {jwtDecode} from "jwt-decode";
 import ChannelForm from "../Sections/ChannelForm";
 import ChannelPage from "../Sections/ChannelPage";
 import { toast,ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "../Sections/Loader";
 
 /*Showing the channel page when the user logs in. 
 If the user doesn't have a channel then it will show them ChannelForm 
@@ -13,7 +15,9 @@ const Channel = () => {
 // Getting user inputs
   const [channelData, setChannelData] = useState(null);
   const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [authloading, setauthLoading] = useState(true);
+  const [channelLoading, setChannelLoading] = useState(true);
+
   // Seeing if the user is authenticated or not
    const [authenticated, setAuthenticated] = useState(false);
   //  getting the token from local storage
@@ -38,12 +42,10 @@ const Channel = () => {
         console.error("Invalid token:", err);
         localStorage.removeItem("token");
          setAuthenticated(false);
-        
          toast.error("Login again.")
       }
     }
-   setLoading(false);
-
+  setauthLoading(false);
 }, []);
 
 // If the user is authenticated, will fetch the channel created by them 
@@ -51,7 +53,7 @@ const Channel = () => {
  useEffect(() => {
   if (!authenticated) return;
 
-  axios.get("http://localhost:3300/getMyChannel", {
+  instance.get("/getMyChannel", {
     headers: {
       Authorization: `Bearer ${token}`, 
     },
@@ -74,7 +76,7 @@ const Channel = () => {
     }
   })
   .finally(() => {
-    setLoading(false);
+    setChannelLoading(false);
   });
 }, [authenticated]);
 
@@ -82,9 +84,9 @@ const Channel = () => {
 return (
   <>
     <ToastContainer />
-    {loading ? (
+    {authloading || channelLoading ? (
       <div className="initial-screen">
-        <h1 className="initial-text">Loading...</h1>
+        <Loader/>
       </div>
     ) : !authenticated ? (
       <div className="initial-screen">
